@@ -6,7 +6,7 @@
 /*   By: hnabil <hnabil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/13 19:09:20 by hnabil            #+#    #+#             */
-/*   Updated: 2021/01/15 18:32:53 by hnabil           ###   ########.fr       */
+/*   Updated: 2021/01/16 17:01:20 by hnabil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,6 @@ unsigned int	ft_color(int *rgb)
 	return (rgb[2] + rgb[1] * 256 + rgb[0] * pow(256, 2));
 }
 
-t_all			*getall(t_all *a)
-{
-	static	t_all all;
-
-	if (a)
-		all = *a;
-	return (&all);
-}
-
 static void		del(void *content)
 {
 	t_all		*a;
@@ -34,6 +25,17 @@ static void		del(void *content)
 
 	a = getall(NULL);
 	a->map[i] = (char *)content;
+	getall(a);
+	i++;
+}
+
+static void		sprt_del(void *content)
+{
+	t_all		*a;
+	static int	i;
+
+	a = getall(NULL);
+	a->sprt.sprites[i] = *(t_vect *)content;
 	getall(a);
 	i++;
 }
@@ -76,9 +78,13 @@ void			ft_initall(t_all *p, char *file)
 	p->ceil = 0;
 	p->floor += ft_color(conf.text.cf[0]);
 	p->ceil += ft_color(conf.text.cf[1]);
+	p->sprt.nbr = ft_lstsize(conf.sprt);
 	p->map = (char **)malloc(p->dim.y * sizeof(char *));
+	p->sprt.sprites = (t_vect *)malloc(p->sprt.nbr * sizeof(t_vect));
+	p->sprt.sprt_order = (int *)malloc(p->sprt.nbr * sizeof(int));
 	getall(p);
 	ft_lstclear(&(conf.map), &del);
+	ft_lstclear(&(conf.sprt), &sprt_del);
 	load_image(p, conf);
 	getall(p);
 }

@@ -6,7 +6,7 @@
 /*   By: hnabil <hnabil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/14 11:03:29 by hnabil            #+#    #+#             */
-/*   Updated: 2021/01/15 17:56:53 by hnabil           ###   ########.fr       */
+/*   Updated: 2021/01/16 18:01:06 by hnabil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,9 +114,10 @@ static void	ft_dda(t_all *p)
 	}
 }
 
-void		ft_update(t_all *p)
+int		ft_update(t_all *p)
 {
-	int	x;
+	int		x;
+	double	buffer[p->resx];
 
 	x = -1;
 	while (++x < p->resx)
@@ -136,5 +137,8 @@ void		ft_update(t_all *p)
 			p->ray.walldist = (p->ray.mapy
 					- p->pos.y + (1 - p->ray.stepy) / 2) / p->ray.dir.y;
 		verline(x, p);
+		buffer[x] = p->ray.walldist;
 	}
+	ft_sprite(p, buffer);
+	return (0);
 }

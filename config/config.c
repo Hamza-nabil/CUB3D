@@ -6,7 +6,7 @@
 /*   By: hnabil <hnabil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/07 09:09:40 by hnabil            #+#    #+#             */
-/*   Updated: 2021/01/15 17:45:11 by hnabil           ###   ########.fr       */
+/*   Updated: 2021/01/16 11:46:39 by hnabil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ static void		ft_init(t_config *p)
 	p->w = 0;
 	p->pos.x = 0;
 	p->pos.y = 0;
+	p->sprt = NULL;
 }
 
 void			ft_error(char *s)

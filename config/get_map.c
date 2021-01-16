@@ -6,7 +6,7 @@
 /*   By: hnabil <hnabil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/07 09:10:50 by hnabil            #+#    #+#             */
-/*   Updated: 2021/01/15 16:17:31 by hnabil           ###   ########.fr       */
+/*   Updated: 2021/01/16 12:52:23 by hnabil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ static void		add_sprite(t_list **sprt, unsigned int x, unsigned int y)
 	t_vect *s;
 
 	s = malloc(sizeof(t_vect));
-	s->x = x;
-	s->y = y;
-	ft_lstadd_front(sprt, ft_lstnew(&s));
+	s->x = x + 0.5;
+	s->y = y + 0.5;
+	ft_lstadd_front(sprt, ft_lstnew(s));
 }
 
 static void		get_dir(char c, t_vect *dir)
@@ -69,6 +69,8 @@ static void		check_map(char *line, char *last_line, int i, t_config *p)
 			ft_error("ERROR\ntwo player in the map");
 		get_dir(line[i], &p->dir);
 	}
+	if (line[i] == '2')
+		add_sprite(&p->sprt, i, ft_lstsize(p->map));
 }
 
 void			get_map(char *line, t_config *p)
