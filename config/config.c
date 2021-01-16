@@ -6,7 +6,7 @@
 /*   By: hnabil <hnabil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/07 09:09:40 by hnabil            #+#    #+#             */
-/*   Updated: 2021/01/16 11:46:39 by hnabil           ###   ########.fr       */
+/*   Updated: 2021/01/16 18:45:27 by hnabil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ void			ft_pars(t_config *p, char *file)
 		while (get_next_line(fd, &line) > 0)
 			check_line(line, p);
 	else
-		ft_error("ERROR\n");
+		ft_error("ERROR\n file error");
 	check_line(line, p);
 	p->h = ft_lstsize(p->map);
 	if (!p->pos.x)

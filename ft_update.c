@@ -6,7 +6,7 @@
 /*   By: hnabil <hnabil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/14 11:03:29 by hnabil            #+#    #+#             */
-/*   Updated: 2021/01/16 18:01:06 by hnabil           ###   ########.fr       */
+/*   Updated: 2021/01/16 19:49:25 by hnabil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,7 @@ static void	ft_dda(t_all *p)
 	}
 }
 
-int		ft_update(t_all *p)
+int			ft_update(t_all *p)
 {
 	int		x;
 	double	buffer[p->resx];

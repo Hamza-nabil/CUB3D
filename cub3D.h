@@ -102,6 +102,7 @@ typedef struct s_all
     t_sprt sprt;
 }               t_all;
 
+int		save_bmp(t_all *p);
 void	ft_initall(t_all *p, char *file);
 t_all	*getall(t_all *a);
 t_vect  ft_add(t_vect v1, t_vect v2);

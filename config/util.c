@@ -6,7 +6,7 @@
 /*   By: hnabil <hnabil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/07 09:11:18 by hnabil            #+#    #+#             */
-/*   Updated: 2021/01/15 18:26:47 by hnabil           ###   ########.fr       */
+/*   Updated: 2021/01/16 18:47:23 by hnabil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,19 +19,6 @@ void	free_tab(char **tab)
 	i = -1;
 	while (tab[++i])
 		free(tab[i]);
-}
-
-void	cub_ext(char *map)
-{
-	int	len;
-
-	len = ft_strlen(map);
-	if (len < 5)
-		ft_error("ERROR\nextention");
-	else if (!ft_strncmp(ft_substr(map, len - 4, 4), ".cub", 4))
-		write(1, "valid\n", 2);
-	else
-		ft_error("ERROR\nextention");
 }
 
 void	get_r(char **line, t_vect *res)
