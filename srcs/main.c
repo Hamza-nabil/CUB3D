@@ -6,12 +6,31 @@
 /*   By: hnabil <hnabil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/13 19:06:03 by hnabil            #+#    #+#             */
-/*   Updated: 2021/01/16 19:51:51 by hnabil           ###   ########.fr       */
+/*   Updated: 2021/01/17 19:07:22 by hnabil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
-#include "config/config.h"
+#include "cub.h"
+
+int				ft_close_game(t_all *p)
+{
+	int i;
+
+	free(p->sprt.sprites);
+	p->sprt.sprites = NULL;
+	free(p->sprt.sprt_order);
+	p->sprt.sprt_order = NULL;
+	i = -1;
+	while (++i < p->dim.y)
+	{
+		free(p->map[i]);
+		p->map[i] = NULL;
+	}
+	free(p->map);
+	p->map = NULL;
+	write(1, "[The end]...", 13);
+	exit(0);
+}
 
 t_all			*getall(t_all *a)
 {
@@ -49,12 +68,13 @@ void			ft_start(char *file, int save)
 	if (save)
 	{
 		save_bmp(&p);
-		write(1, "[saved into save.bmp ... !]\n", 24);
-		return ;
+		write(1, "[saved into cub3D.bmp ... !]\n", 24);
+		ft_close_game(&p);
 	}
-	write(1, "[starting game ... !]\n", 22);
+	write(1, "[The game start ... !]\n", 24);
 	mlx_put_image_to_window(p.w.mlx_ptr, p.w.mlx_wind, p.w.img, 0, 0);
 	mlx_hook(p.w.mlx_wind, 2, (1L << 0), ft_key, (void *)&p);
+	mlx_hook(p.w.mlx_wind, 17, (1L << 5), ft_close_game, &p);
 	mlx_loop(p.w.mlx_ptr);
 }
 

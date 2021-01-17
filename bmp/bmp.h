@@ -6,13 +6,13 @@
 /*   By: hnabil <hnabil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/16 19:54:10 by hnabil            #+#    #+#             */
-/*   Updated: 2021/01/16 19:54:13 by hnabil           ###   ########.fr       */
+/*   Updated: 2021/01/17 17:57:44 by hnabil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef BMP_H
 # define BMP_H
-# include "../cub3D.h"
+# include "../srcs/cub.h"
 
 typedef struct	s_bitmap_file_header
 {

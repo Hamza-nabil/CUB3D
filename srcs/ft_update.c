@@ -6,11 +6,11 @@
 /*   By: hnabil <hnabil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/14 11:03:29 by hnabil            #+#    #+#             */
-/*   Updated: 2021/01/16 19:49:25 by hnabil           ###   ########.fr       */
+/*   Updated: 2021/01/17 17:51:10 by hnabil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include "cub.h"
 
 static void	texture(t_all *p, int x, int start, int end)
 {

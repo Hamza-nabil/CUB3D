@@ -6,7 +6,7 @@
 /*   By: hnabil <hnabil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/16 19:53:56 by hnabil            #+#    #+#             */
-/*   Updated: 2021/01/16 19:54:01 by hnabil           ###   ########.fr       */
+/*   Updated: 2021/01/17 14:56:46 by hnabil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,9 +67,9 @@ int		save_bmp(t_all *p)
 {
 	int						file;
 
-	if (!(file = open("save.bmp", O_CREAT | O_RDWR | O_TRUNC, 0666)))
+	if (!(file = open("cub3D.bmp", O_CREAT | O_RDWR | O_TRUNC, 0666)))
 	{
-		write(1, "Error\nCould not write file", 26);
+		write(1, "Error\nCould not create file cub3D.", 26);
 		return (-1);
 	}
 	write_file(file, p);

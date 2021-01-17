@@ -6,11 +6,11 @@
 /*   By: hnabil <hnabil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/16 11:03:07 by hnabil            #+#    #+#             */
-/*   Updated: 2021/01/16 18:24:52 by hnabil           ###   ########.fr       */
+/*   Updated: 2021/01/17 17:51:21 by hnabil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include "cub.h"
 
 void		ft_sort_sprites(t_all *p)
 {

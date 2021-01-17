@@ -6,11 +6,11 @@
 /*   By: hnabil <hnabil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/14 17:37:53 by hnabil            #+#    #+#             */
-/*   Updated: 2021/01/14 17:39:34 by hnabil           ###   ########.fr       */
+/*   Updated: 2021/01/17 17:51:24 by hnabil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include "cub.h"
 
 t_vect	ft_add(t_vect v1, t_vect v2)
 {

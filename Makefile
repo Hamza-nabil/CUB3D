@@ -1,31 +1,44 @@
-SRCS			=	main.c ft_init.c ft_update.c vect.c ft_key.c sprite.c\
-					config/config.c config/get_map.c config/util.c \
-					gnl/get_next_line.c gnl/get_next_line_utils.c \
-					bmp/bmp.c
+SRCS			=	srcs/ft_init.c 				\
+					srcs/ft_update.c 			\
+					srcs/vect.c 				\
+					srcs/ft_key.c 				\
+					srcs/sprite.c				\
+					config/config.c 			\
+					config/get_map.c 			\
+					config/util.c 				\
+					gnl/get_next_line.c 		\
+					gnl/get_next_line_utils.c 	\
+					bmp/bmp.c 					\
+					srcs/main.c
+
+NAMELIB			= ./libft/libft.a
 OBJS			= $(SRCS:.c=.o)
 CC				= gcc
 RM				= rm -f
-CFLAGS			=  -I.
-LIBS			= -Lmlx -lmlx -framework OpenGL -framework AppKit -lm -L libft -lft
-MLX				= libmlx.dylib
+CFLAGS			= -Wall -Werror -Wextra
+MLX				=  -lmlx -framework OpenGL -framework AppKit
+
 
 NAME			= cub3D
 
+BMP				= cub3D.bmp
+
 all:			$(NAME)
 
-$(NAME):		$(MLX) $(OBJS)
-				gcc ${CFLAGS} -o ${NAME} ${OBJS} ${LIBS}
+$(NAME):		$(OBJS)
+				$(MAKE) -C ./libft
+				$(MAKE) bonus -C ./libft
+				$(CC)  $(OBJS)  $(NAMELIB)  $(MLX) -o $(NAME) 
 				
 
-$(MLX):
-				@$(MAKE) -C mlx
-				@mv mlx/$(MLX) .
 
 clean:
-	@$(MAKE) -C mlx clean
-	$(RM) $(OBJS) $(BONUS_OBJS)
+	$(RM) $(OBJS)
+	$(MAKE) fclean -C ./libft
 
 fclean:	clean
-	@$(RM) $(NAME) $(MLX)
+	@$(RM) $(NAME)  $(BMP)
+	$(MAKE) fclean -C ./libft
+	
 
 re:	fclean $(NAME)

@@ -6,11 +6,11 @@
 /*   By: hnabil <hnabil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/14 17:26:12 by hnabil            #+#    #+#             */
-/*   Updated: 2021/01/16 16:56:58 by hnabil           ###   ########.fr       */
+/*   Updated: 2021/01/17 18:27:06 by hnabil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include "cub.h"
 
 void	floorceil(int *tab, unsigned int floor, unsigned int ceil, int size)
 {
@@ -48,10 +48,7 @@ void	ft_mov(t_all *p, t_vect v, double movespeed)
 int		ft_key(int key, t_all *p)
 {
 	if (key == 53)
-	{
-		write(1, "[ending game ... !]\n", 19);
-		exit(0);
-	}
+		ft_close_game(p);
 	if (key == 13)
 		ft_mov(p, p->dir, 1);
 	if (key == 1)

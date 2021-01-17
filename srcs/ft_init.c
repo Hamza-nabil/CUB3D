@@ -6,12 +6,11 @@
 /*   By: hnabil <hnabil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/13 19:09:20 by hnabil            #+#    #+#             */
-/*   Updated: 2021/01/16 17:01:20 by hnabil           ###   ########.fr       */
+/*   Updated: 2021/01/17 18:11:10 by hnabil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
-#include "config/config.h"
+#include "cub.h"
 
 unsigned int	ft_color(int *rgb)
 {
@@ -54,9 +53,10 @@ static void		load_image(t_all *p, t_config conf)
 		wind.mlx_wind = mlx_xpm_file_to_image(p->w.mlx_ptr,
 				conf.text.t[i], &p->texture[i].w, &p->texture[i].h);
 		if (!wind.mlx_wind)
-			ft_error("ERROR\ntexture not valid.");
+			ft_error(&conf, "ERROR\n\ttexture not valid.");
 		p->texture[i].data = (int *)mlx_get_data_addr(
 				wind.mlx_wind, &bpp, &s_l, &end);
+		free(conf.text.t[i]);
 	}
 }
 
@@ -83,8 +83,8 @@ void			ft_initall(t_all *p, char *file)
 	p->sprt.sprites = (t_vect *)malloc(p->sprt.nbr * sizeof(t_vect));
 	p->sprt.sprt_order = (int *)malloc(p->sprt.nbr * sizeof(int));
 	getall(p);
+	load_image(p, conf);
 	ft_lstclear(&(conf.map), &del);
 	ft_lstclear(&(conf.sprt), &sprt_del);
-	load_image(p, conf);
 	getall(p);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hnabil <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: hnabil <hnabil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/21 20:41:46 by hnabil            #+#    #+#             */
-/*   Updated: 2019/12/21 20:41:53 by hnabil           ###   ########.fr       */
+/*   Updated: 2021/01/17 18:06:25 by hnabil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,9 @@
 # include <string.h>
 # include <stdlib.h>
 # include <unistd.h>
-#define BUFFER_SIZE  25
+
+# define BUFFER_SIZE  25
+
 size_t	ft_strlen(const char *str);
 char	*ft_strdup(const char *s1);
 char	*ft_strsub(char const *s, unsigned int start, size_t len);
