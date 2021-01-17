@@ -18,6 +18,7 @@ cub3D is a remarkable playground to explore the playful practical applications o
               ◦ Pressing ESC close the window and quit the program cleanly.
               ◦ Clicking on the red cross on the window’s frame  close the window and quit the program .
    • The program  take as a first argument a scene description file with the .cub extension.
+   
    ◦ The map must be composed of only 4 possible characters: 0 for an empty space, 1 for a wall, 2 for an item and N,S,E or W for the player’s start position and spawning orientation.
               This is a simple valid map:
               
