@@ -5,6 +5,7 @@ cub3D is a remarkable playground to explore the playful practical applications o
 
        * the original game : http://users.atw.hu/wolf3d/
    The program  able to :
+   
     • display an item (sprite) instead of a wall.
     
    • set the floor and ceilling colors to two different ones.
