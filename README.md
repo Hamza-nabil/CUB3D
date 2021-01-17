@@ -4,28 +4,39 @@
 cub3D is a remarkable playground to explore the playful practical applications of mathematics without having to understand the specifics .
 
        * the original game : http://users.atw.hu/wolf3d/
- The program  able to :
+   The program  able to :
     • display an item (sprite) instead of a wall.
-    • set the floor and ceilling colors to two different ones.
-    •  save the first rendered image in bmp format when its second argument is "––save".
-    • If no second argument is supllied, the program displays the image in a window and respects the following rules:
-              ◦ The left and right arrow keys of the keyboard allow you to look left and right in the maze.
+    
+   • set the floor and ceilling colors to two different ones.
+    
+   •  save the first rendered image in bmp format when its second argument is "––save".
+    
+   • If no second argument is supllied, the program displays the image in a window and respects the following rules:
+   
+               ◦ The left and right arrow keys of the keyboard allow you to look left and right in the maze.
               ◦ The W, A, S and D keys allow you to move the point of view through the maze.
               ◦ Pressing ESC close the window and quit the program cleanly.
               ◦ Clicking on the red cross on the window’s frame  close the window and quit the program .
-    • The program  take as a first argument a scene description file with the .cub extension.
-    ◦ The map must be composed of only 4 possible characters: 0 for an empty space, 1 for a wall, 2 for an item and N,S,E or W for the player’s start position and spawning orientation.
+   • The program  take as a first argument a scene description file with the .cub extension.
+   ◦ The map must be composed of only 4 possible characters: 0 for an empty space, 1 for a wall, 2 for an item and N,S,E or W for the player’s start position and spawning orientation.
               This is a simple valid map:
+              
                               111111
                               100101
                               102001
                               1100N1
                               111111
-    ◦ The map must be closed/surrounded by walls, if not the program return an error.
-    ◦ Except for the map content which always has to be the last, each type of element can be set in any order in the file.
-    ◦ Except for the map, each type of information from an element can be separated by one or more space(s).
-    ◦ The map  parsed as it looks like in the file. Spaces are a valid part of the map. .
-    ◦ Each element (except the map) firsts information is the type identifier (composed by one or two character(s)), followed by all specific informations for each object in a strict order such as :
+                              
+   ◦ The map must be closed/surrounded by walls, if not the program return an error.
+    
+   ◦ Except for the map content which always has to be the last, each type of element can be set in any order in the file.
+   
+   ◦ Except for the map, each type of information from an element can be separated by one or more space(s).
+   
+   ◦ The map  parsed as it looks like in the file. Spaces are a valid part of the map.
+   
+   ◦ Each element (except the map) firsts information is the type identifier (composed by one or two character(s)), followed by all specific informations for each object in a strict order such as :
+   
                     ∗ Resolution:
                           R 1920 1080
                             · identifier: R
@@ -60,7 +71,7 @@ cub3D is a remarkable playground to explore the playful practical applications o
                         C 225,30,0
                               · identifier: C
                               · R,G,B colors in range [0,255]: 0, 255, 255
-      ◦ Example of the mandatory part with a minimalist .cub scene:
+  ◦ Example of the mandatory part with a minimalist .cub scene:
       
                           R 1920 1080
                           NO ./path_to_the_north_texture
@@ -84,5 +95,6 @@ cub3D is a remarkable playground to explore the playful practical applications o
                           11000001110101011111011110N0111
                           11110111 1110101 101111010001
                           11111111 1111111 111111111111
+                         
                           
-      ◦ If any misconfiguration of any kind is encountered in the file, the program exit  and return "Error\n" followed by an explicit error message .
+   ◦ If any misconfiguration of any kind is encountered in the file, the program exit  and return "Error\n" followed by an explicit error message .
