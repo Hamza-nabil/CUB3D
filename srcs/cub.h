@@ -6,7 +6,7 @@
 /*   By: hnabil <hnabil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/17 17:49:43 by hnabil            #+#    #+#             */
-/*   Updated: 2021/01/17 19:14:38 by hnabil           ###   ########.fr       */
+/*   Updated: 2021/01/19 17:12:08 by hnabil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,18 @@
 # include "../gnl/get_next_line.h"
 # include "mlx.h"
 
-# define ROTSPEED 0.2
-# define MOVSPEED 0.5
+# define ROTSPEED 0.02
+# define MOVSPEED 0.08
+
+typedef struct		s_mov
+{
+	int				fw;
+	int				bk;
+	int				r;
+	int				l;
+	int				rr;
+	int				rl;
+}					t_mov;
 
 typedef struct		s_sprtools
 {
@@ -108,6 +118,7 @@ typedef struct		s_all
 	unsigned int	ceil;
 	unsigned int	floor;
 	t_sprt			sprt;
+	t_mov			mv;
 }					t_all;
 
 typedef struct		s_text
@@ -145,8 +156,10 @@ double				ft_vectlenght(t_vect v);
 int					ft_update(t_all *p);
 void				floorceil(int *tab,
 		unsigned int floor, unsigned int ceil, int size);
-int					ft_key(int key, t_all *p);
+int					ft_key(t_all *p);
 void				ft_sprite(t_all *p, double *buffer);
 int					ft_close_game(t_all *p);
+unsigned int		ft_color(int *rgb);
+void				ft_walldist(t_all *p);
 
 #endif

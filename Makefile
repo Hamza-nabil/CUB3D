@@ -1,4 +1,5 @@
 SRCS			=	srcs/ft_init.c 				\
+					srcs/utils.c 				\
 					srcs/ft_update.c 			\
 					srcs/vect.c 				\
 					srcs/ft_key.c 				\
@@ -23,22 +24,27 @@ NAME			= cub3D
 
 BMP				= cub3D.bmp
 
-all:			$(NAME)
+all: $(NAME)
 
-$(NAME):		$(OBJS)
-				$(MAKE) -C ./libft
-				$(MAKE) bonus -C ./libft
-				$(CC)  $(OBJS)  $(NAMELIB)  $(MLX) -o $(NAME) 
+%.o: %.c
+	@gcc $(CFLAGS) -c $< -o $@
+
+$(NAME): $(OBJS)
+	@$(MAKE) -C ./libft
+	@$(MAKE) bonus -C ./libft
+	@$(CC)  $(OBJS)  $(NAMELIB)  $(MLX) -o $(NAME)
+	@echo "\033[34m\n************ Done ! ************\n\n"
 				
 
 
 clean:
-	$(RM) $(OBJS)
-	$(MAKE) fclean -C ./libft
+	@$(RM) $(OBJS)
+	@$(MAKE) fclean -C ./libft
 
 fclean:	clean
 	@$(RM) $(NAME)  $(BMP)
-	$(MAKE) fclean -C ./libft
+	@$(MAKE) fclean -C ./libft
+	@echo "\033[34m\n************ clean ! ************\n\n"
 	
 
 re:	fclean $(NAME)

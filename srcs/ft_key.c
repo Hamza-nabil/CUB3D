@@ -6,7 +6,7 @@
 /*   By: hnabil <hnabil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/14 17:26:12 by hnabil            #+#    #+#             */
-/*   Updated: 2021/01/17 18:27:06 by hnabil           ###   ########.fr       */
+/*   Updated: 2021/01/19 16:53:27 by hnabil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,23 +45,20 @@ void	ft_mov(t_all *p, t_vect v, double movespeed)
 		p->pos.y += v.y * movespeed;
 }
 
-int		ft_key(int key, t_all *p)
+int		ft_key(t_all *p)
 {
-	if (key == 53)
-		ft_close_game(p);
-	if (key == 13)
-		ft_mov(p, p->dir, 1);
-	if (key == 1)
-		ft_mov(p, p->dir, -1);
-	if (key == 2)
-		ft_mov(p, p->plane, 1);
-	if (key == 0)
-		ft_mov(p, p->plane, -1);
-	if (key == 123)
-		ft_rot(p, 1);
-	if (key == 124)
-		ft_rot(p, -1);
-	floorceil(p->w.tab_img, p->floor, p->ceil, p->resx * p->resy);
+	if (p->mv.fw)
+		ft_mov(p, p->dir, p->mv.fw);
+	if (p->mv.bk)
+		ft_mov(p, p->dir, -p->mv.bk);
+	if (p->mv.r)
+		ft_mov(p, p->plane, p->mv.r);
+	if (p->mv.l)
+		ft_mov(p, p->plane, -p->mv.l);
+	if (p->mv.rl)
+		ft_rot(p, p->mv.rl);
+	if (p->mv.rr)
+		ft_rot(p, -p->mv.rr);
 	ft_update(p);
 	mlx_put_image_to_window(p->w.mlx_ptr, p->w.mlx_wind, p->w.img, 0, 0);
 	return (0);

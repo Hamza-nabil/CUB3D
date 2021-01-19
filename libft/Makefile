@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hnabil <marvin@42.fr>                      +#+  +:+       +#+         #
+#    By: hnabil <hnabil@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/26 15:04:44 by hnabil            #+#    #+#              #
-#    Updated: 2019/11/13 16:41:06 by hnabil           ###   ########.fr        #
+#    Updated: 2021/01/19 17:27:24 by hnabil           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -68,18 +68,19 @@ CFLAGS = -Wall -Wextra -Werror -g
 all : $(NAME)
 
 $(NAME) : $(OBJ)
+	@echo "\033[31m\n\tcompilation..."
 	@ar rcs $(NAME) $(OBJ)
 
 bonus : $(OBJB)
 	@ar rcs $(NAME) $(OBJB)
 
 %.o: %.c
-	gcc $(CFLAGS) -c $< -o $@
+	@gcc $(CFLAGS) -c $< -o $@
 
 clean :
-	rm -rf $(OBJ) $(OBJB)
+	@rm -rf $(OBJ) $(OBJB)
 
 fclean : clean
-	rm -rf $(NAME)
+	@rm -rf $(NAME)
 
 re : fclean all

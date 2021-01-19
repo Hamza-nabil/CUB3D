@@ -6,16 +6,11 @@
 /*   By: hnabil <hnabil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/13 19:09:20 by hnabil            #+#    #+#             */
-/*   Updated: 2021/01/17 18:11:10 by hnabil           ###   ########.fr       */
+/*   Updated: 2021/01/19 17:06:09 by hnabil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
-
-unsigned int	ft_color(int *rgb)
-{
-	return (rgb[2] + rgb[1] * 256 + rgb[0] * pow(256, 2));
-}
 
 static void		del(void *content)
 {
@@ -60,6 +55,16 @@ static void		load_image(t_all *p, t_config conf)
 	}
 }
 
+void			ft_initmov(t_mov *mv)
+{
+	mv->fw = 0;
+	mv->bk = 0;
+	mv->r = 0;
+	mv->l = 0;
+	mv->rr = 0;
+	mv->rl = 0;
+}
+
 void			ft_initall(t_all *p, char *file)
 {
 	t_config	conf;
@@ -74,14 +79,13 @@ void			ft_initall(t_all *p, char *file)
 	p->resy = (int)conf.res.y;
 	p->dim.x = conf.w;
 	p->dim.y = conf.h;
-	p->floor = 0;
-	p->ceil = 0;
-	p->floor += ft_color(conf.text.cf[0]);
-	p->ceil += ft_color(conf.text.cf[1]);
+	p->floor = ft_color(conf.text.cf[0]);
+	p->ceil = ft_color(conf.text.cf[1]);
 	p->sprt.nbr = ft_lstsize(conf.sprt);
 	p->map = (char **)malloc(p->dim.y * sizeof(char *));
 	p->sprt.sprites = (t_vect *)malloc(p->sprt.nbr * sizeof(t_vect));
 	p->sprt.sprt_order = (int *)malloc(p->sprt.nbr * sizeof(int));
+	ft_initmov(&p->mv);
 	getall(p);
 	load_image(p, conf);
 	ft_lstclear(&(conf.map), &del);

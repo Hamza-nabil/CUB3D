@@ -6,7 +6,7 @@
 /*   By: hnabil <hnabil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/16 11:03:07 by hnabil            #+#    #+#             */
-/*   Updated: 2021/01/17 17:51:21 by hnabil           ###   ########.fr       */
+/*   Updated: 2021/01/19 17:04:04 by hnabil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ void		ft_drawspritelines(t_sprtools *t, t_all *p, double *buffer)
 	int			y;
 	int			d;
 
+	t->stripe--;
 	while (++t->stripe < t->drawex)
 	{
 		t->xtex = (int)(256 * (t->stripe - (-t->sprtw / 2 + t->sprtsx))
@@ -85,7 +86,7 @@ void		ft_sprite_height(t_sprtools *t, t_all *p)
 		t->drawsy = 0;
 	t->drawey = t->sprth / 2 + p->resy / 2;
 	if (t->drawey >= p->resy)
-		t->drawey = p->resy - 1;
+		t->drawey = p->resy;
 }
 
 void		ft_sprite(t_all *p, double *buffer)

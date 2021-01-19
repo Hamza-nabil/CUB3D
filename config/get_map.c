@@ -6,7 +6,7 @@
 /*   By: hnabil <hnabil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/07 09:10:50 by hnabil            #+#    #+#             */
-/*   Updated: 2021/01/17 18:45:47 by hnabil           ###   ########.fr       */
+/*   Updated: 2021/01/19 17:34:37 by hnabil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,8 @@ static void		check_map(char *line, char *last_line, int i, t_config *p)
 	{
 		if (!p->pos.x && !p->pos.y)
 		{
-			p->pos.x = i;
-			p->pos.y = ft_lstsize(p->map);
+			p->pos.x = i + 0.5;
+			p->pos.y = ft_lstsize(p->map) + 0.5;
 		}
 		else
 			ft_error(p, "ERROR\nMAP : Two player.");

@@ -6,7 +6,7 @@
 /*   By: hnabil <hnabil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/14 11:03:29 by hnabil            #+#    #+#             */
-/*   Updated: 2021/01/17 17:51:10 by hnabil           ###   ########.fr       */
+/*   Updated: 2021/01/19 17:09:15 by hnabil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static void	texture(t_all *p, int x, int start, int end)
 		xtex = p->texture[p->ray.textn].w - xtex - 1;
 	step = 1.0 * p->texture[p->ray.textn].h / lineheight;
 	texpos = (start - p->resy / 2 + lineheight / 2) * step;
-	while (++start < end)
+	while (++start <= end)
 	{
 		ytex = (int)texpos & (p->texture[p->ray.textn].h - 1);
 		texpos += step;
@@ -120,6 +120,7 @@ int			ft_update(t_all *p)
 	double	buffer[p->resx];
 
 	x = -1;
+	floorceil(p->w.tab_img, p->floor, p->ceil, p->resx * p->resy);
 	while (++x < p->resx)
 	{
 		p->ray.x = 2 * x / (double)p->resx - 1;
@@ -130,12 +131,7 @@ int			ft_update(t_all *p)
 		p->ray.dist.y = fabs(1 / p->ray.dir.y);
 		p->ray.hit = 0;
 		ft_dda(p);
-		if (p->ray.wallside == 0)
-			p->ray.walldist = (p->ray.mapx
-					- p->pos.x + (1 - p->ray.stepx) / 2) / p->ray.dir.x;
-		else
-			p->ray.walldist = (p->ray.mapy
-					- p->pos.y + (1 - p->ray.stepy) / 2) / p->ray.dir.y;
+		ft_walldist(p);
 		verline(x, p);
 		buffer[x] = p->ray.walldist;
 	}
